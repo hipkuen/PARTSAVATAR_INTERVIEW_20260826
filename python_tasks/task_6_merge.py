@@ -4,7 +4,12 @@
 
 def update_inventory(current, updates):
     # TODO: Implement merge logic
-    pass
+
+    for (key, num) in updates.items():
+        current[key] = num
+
+    return current
+
 
 # Test Case
 current_inv = {'Brakes': 10, 'Oil': 5}

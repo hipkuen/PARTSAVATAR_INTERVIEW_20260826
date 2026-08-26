@@ -7,6 +7,14 @@ def calculate_discount(price, discount_percent):
     or if inputs are strings/None. Return 0 for invalid inputs.
     """
     # TODO: Implement logic
+
+    if isinstance(price, str) or price == None:
+        return 0
+    
+    if isinstance(discount_percent, str) or discount_percent == None:
+        return 0
+
+    return price * discount_percent
     
 
 # Test Case

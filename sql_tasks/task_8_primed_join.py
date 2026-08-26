@@ -8,13 +8,13 @@ def get_customer_spend():
     # total spend (price * quantity) per Customer Name.
     # Only calculate those orders with "Shipped" status
     query = """
-    SELECT Customers.customer_id, SUM(Order_Items.price * Order_Items.quantity)
+    SELECT Customers.customer_id, COALESCE(SUM(Order_Items.price * Order_Items.quantity), 0)
     FROM Customers
     LEFT JOIN Orders
     ON Customers.customer_id = Orders.customer_id
+    AND Orders.status = 'Shipped'
     LEFT JOIN Order_Items
     ON Order_Items.order_id = Orders.order_id
-    WHERE Orders.status = 'Shipped'
     GROUP BY Customers.customer_id
     """
     
